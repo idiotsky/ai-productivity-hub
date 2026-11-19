@@ -1,0 +1,142 @@
+
+# ==================================================
+# AI Productivity Hub - Monorepo .gitignore
+# Angular 22 + .NET 11 + SQL Server
+# Rider / WebStorm / Visual Studio / Windows
+# ==================================================
+
+# --------------------------------------------------
+# 1. Angular / Node.js
+# --------------------------------------------------
+node_modules/
+.angular/
+dist/
+coverage/
+.nx/
+.npm/
+.npmrc.local
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --------------------------------------------------
+# 2. .NET / ASP.NET Core
+# --------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Aa]rtifacts/
+[Tt]est[Rr]esults/
+[Bb]enchmark[Dd]ot[Nn]et.Artifacts/
+
+*.dll
+*.exe
+*.pdb
+*.binlog
+*.cache
+*.deps.json
+*.runtimeconfig.dev.json
+
+# .NET user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.userprefs
+
+# --------------------------------------------------
+# 3. IDE - Rider / WebStorm / Visual Studio
+# --------------------------------------------------
+.idea/
+.vs/
+
+# VS Code: ignore personal settings, retain shared config
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+*.sln.iml
+
+# --------------------------------------------------
+# 4. Environment / Secrets
+# --------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Local-only .NET configuration
+appsettings.*.local.json
+appsettings.Local.json
+appsettings.Secrets.json
+
+# Certificates / private keys
+*.pfx
+*.p12
+*.p8
+*.key
+
+# Local secret directories
+secrets/
+.private/
+
+# --------------------------------------------------
+# 5. SQL Server
+# --------------------------------------------------
+*.bak
+*.trn
+*.mdf
+*.ndf
+*.ldf
+*.dacpac
+*.bacpac
+
+# Local database dumps
+database/backups/
+database/dumps/
+
+# --------------------------------------------------
+# 6. Nginx / Deployment
+# --------------------------------------------------
+deploy/nginx/logs/
+deploy/nginx/temp/
+deploy/nginx/cache/
+deploy/nginx/certs/private/
+
+# Generated deployment files
+deploy/output/
+publish/
+
+# --------------------------------------------------
+# 7. Logs / Temporary Files
+# --------------------------------------------------
+logs/
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*.orig
+
+# --------------------------------------------------
+# 8. Windows
+# --------------------------------------------------
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.stackdump
+
+# --------------------------------------------------
+# 9. Miscellaneous
+# --------------------------------------------------
+.DS_Store
+*.pid
+*.pid.lock
