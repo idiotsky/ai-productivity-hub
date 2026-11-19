@@ -24,7 +24,7 @@ Keep detailed definitions in their owning document; update related contracts tog
 
 - Inspect the current branch, working tree, relevant code, tests and configuration. Preserve existing user changes; distinguish them from your changes.
 - State assumptions and, for multi-step work, a brief plan, target issue (if one exists), dependencies, affected contracts/files and verifiable acceptance criteria. Prefer observable Given/When/Then outcomes.
-- Deliver small, reviewable vertical slices. For a sliced implementation, use [continue-plan](.claude/skills/continue-plan/SKILL.md); keep status, decisions and verification in a plan next to the specification. Complete one slice per session, then stop.
+- Deliver small, reviewable vertical slices. For a sliced implementation, use [continue-plan](.agents/skills/continue-plan/SKILL.md); keep status, decisions and verification in a plan next to the specification. Complete one slice per session, then stop.
 - Make the minimum change that satisfies the request. Match local style; keep unrelated formatting, refactoring, dependency upgrades and speculative abstractions out of scope. Present optional refactoring with rationale, impact, cost and priority before applying it.
 - Read actual framework settings, package versions, scripts and formatting configuration instead of assuming commands or dependencies exist. Save new instruction files as UTF-8 without BOM and CRLF; follow applicable repository formatting configuration for code.
 - Commit, push, publish or deploy only when requested. Use explicit file paths when staging authorized changes; preserve unrelated work.

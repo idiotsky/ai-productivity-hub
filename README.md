@@ -21,6 +21,6 @@ A self-hosted app for personal task management, time tracking and productivity i
 
 ## Development
 
-Read [AGENTS.md](AGENTS.md) before making changes. Deliver one reviewable slice at a time using [continue-plan](.claude/skills/continue-plan/SKILL.md) when an implementation plan exists.
+Read [AGENTS.md](AGENTS.md) before making changes. Deliver one reviewable slice at a time using [continue-plan](.agents/skills/continue-plan/SKILL.md) when an implementation plan exists.
 
 See [Client setup](client/README.md) and [Server setup](server/README.md) for independent development commands.
