@@ -2,7 +2,7 @@
 
 A self-hosted app for personal task management, time tracking and productivity insights, with external AI access through Remote MCP and OAuth.
 
-**Status:** Design and planning. Application code is not implemented yet.
+**Status:** Client and Server scaffolds exist. Product features are not implemented yet.
 
 ## Planned Stack
 
@@ -23,4 +23,4 @@ A self-hosted app for personal task management, time tracking and productivity i
 
 Read [AGENTS.md](AGENTS.md) before making changes. Deliver one reviewable slice at a time using [continue-plan](.claude/skills/continue-plan/SKILL.md) when an implementation plan exists.
 
-Build and setup instructions will be added with the application projects.
+See [Client setup](client/README.md) and [Server setup](server/README.md) for independent development commands.
