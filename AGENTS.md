@@ -6,7 +6,7 @@ Applies repository-wide; read applicable nested `AGENTS.md` files before editing
 
 - Read the product specification and architecture document below, plus relevant approved ADRs, before changes. Each document owns its subject; this file governs execution and cannot silently override approved requirements or contracts.
 - Documentation lives in `Docs/`; preserve actual path casing. The architecture layout describes target application directories, not existing implementation. Create directories and documents only as required by authorized work; avoid unused placeholder modules.
-- Write code, identifiers, comments, agent instructions and implementation plans in English; communicate with the user in Chinese. Product requirements remain in their existing language. Keep any maintained translations equivalent when editing them.
+- Write code, identifiers, comments, agent instructions and implementation plans in English; communicate with the user in Chinese. Write GitHub Issue titles and descriptions in English. Product requirements remain in their existing language. Keep any maintained translations equivalent when editing them.
 - Generate application code only when explicitly requested. Preparing instructions or a plan does not authorize implementing the backlog.
 - Resolve behavior, compatibility and data ambiguities with the user. Cite conflicting specification sections and propose a small ADR with impact, cost, security and migration implications before changing an agreed decision. Treat product specification §13 recommendations and open items as unresolved until decided.
 
