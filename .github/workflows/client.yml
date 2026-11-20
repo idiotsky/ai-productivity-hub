@@ -1,0 +1,66 @@
+name: Client
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    name: Client impact
+    runs-on: windows-2025
+    timeout-minutes: 5
+    outputs:
+      affected: ${{ steps.paths.outputs.client }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - run: node --test .github/scripts/ci.test.mjs
+      - id: paths
+        run: node .github/scripts/ci.mjs detect
+
+  build:
+    name: Client quality gates
+    needs: changes
+    if: needs.changes.outputs.affected == 'true'
+    runs-on: windows-2025
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: client
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: "24.22.0"
+          package-manager-cache: false
+      - run: npm install --global npm@12.2.0
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm test -- --watch=false
+      - run: npm run build -- --configuration production
+
+  required:
+    name: Client CI
+    needs: [changes, build]
+    if: ${{ always() }}
+    runs-on: windows-2025
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - run: node .github/scripts/ci.mjs gate
+        env:
+          DETECTION_RESULT: ${{ needs.changes.result }}
+          AFFECTED: ${{ needs.changes.outputs.affected }}
+          BUILD_RESULT: ${{ needs.build.result }}
