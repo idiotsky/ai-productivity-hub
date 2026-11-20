@@ -38,4 +38,4 @@ Build-configuration update verification:
 - Strong-name verification (`sn -vf`) passed for the API and test assemblies.
 - Format verification failed on pre-existing CRLF line endings in unchanged `src/AIProductivityHub.Api/Program.cs`; that unrelated file was left unchanged.
 
-Next proposed slice: independent path-aware Client and Server CI workflows; see [the foundation plan](../Docs/Foundation-CI-Plan.md).
+CI runs these gates in the independent Server workflow; see the [root CI documentation](../README.md#continuous-integration). Actual hosted-run evidence is the next slice in [the foundation plan](../Docs/Foundation-CI-Plan.md).

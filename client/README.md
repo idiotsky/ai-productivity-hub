@@ -44,5 +44,6 @@ Browser inspection with an authorized local license passed at actual CSS widths
 license notice. The static shell has no interactive controls to exercise with
 keyboard/touch. This is shell verification, not business-flow browser E2E.
 
-Next proposed slice: independent path-aware Client and Server CI workflows;
-see [the foundation plan](../Docs/Foundation-CI-Plan.md).
+CI runs these gates in the independent Client workflow; see the
+[root CI documentation](../README.md#continuous-integration). Actual hosted-run
+evidence is the next slice in [the foundation plan](../Docs/Foundation-CI-Plan.md).

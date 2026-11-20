@@ -1,0 +1,63 @@
+name: Server
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    name: Server impact
+    runs-on: windows-2025
+    timeout-minutes: 5
+    outputs:
+      affected: ${{ steps.paths.outputs.server }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - run: node --test .github/scripts/ci.test.mjs
+      - id: paths
+        run: node .github/scripts/ci.mjs detect
+
+  build:
+    name: Server quality gates
+    needs: changes
+    if: needs.changes.outputs.affected == 'true'
+    runs-on: windows-2025
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+        with:
+          global-json-file: server/global.json
+      - run: dotnet restore AIProductivityHub.slnx
+      - run: dotnet build AIProductivityHub.slnx --configuration Release --no-restore -warnaserror
+      - run: dotnet test tests/AIProductivityHub.Api.Tests/AIProductivityHub.Api.Tests.csproj --configuration Release --no-build --no-restore --settings tests.runsettings
+      - run: dotnet format AIProductivityHub.slnx --verify-no-changes --no-restore
+
+  required:
+    name: Server CI
+    needs: [changes, build]
+    if: ${{ always() }}
+    runs-on: windows-2025
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - run: node .github/scripts/ci.mjs gate
+        env:
+          DETECTION_RESULT: ${{ needs.changes.result }}
+          AFFECTED: ${{ needs.changes.outputs.affected }}
+          BUILD_RESULT: ${{ needs.build.result }}
