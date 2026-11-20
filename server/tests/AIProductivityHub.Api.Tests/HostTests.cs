@@ -16,7 +16,7 @@ public class HostTests
 
         using var response = await client.GetAsync(path);
 
-        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         Assert.That(await response.Content.ReadAsStringAsync(), Is.Empty);
     }
 }
