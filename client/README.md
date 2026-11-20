@@ -1,59 +1,48 @@
 # Client
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.3.0.
+Minimal Angular 22 + PrimeNG 22/Aura foundation shell. Requires Node.js 24.22.0
+and npm 12.2.0. Client dependencies and quality gates are independent of Server.
 
-## Development server
+From this directory:
 
-To start a local development server, run:
-
-```bash
-ng serve
+```powershell
+npm ci
+npm run format:check
+npm run lint
+npm test -- --watch=false
+npm run build -- --configuration production
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+`npm run format` applies Prettier. Lint uses an ESLint flat config:
+Angular/TypeScript recommended rules, template accessibility, `app` selectors,
+and `eslint-config-prettier` last. ESLint scans `src/`, including templates;
+Prettier checks all supported project files except generated output/dependencies.
+Vitest is run through Angular's adopted unit-test builder. Zero discovered tests
+are an error. Build output is in `dist/client/`.
 
-## Code scaffolding
+## PrimeUI license
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+PrimeNG 22 uses the Community license configured directly in
+`src/app/app.config.ts`. Standard development and production build commands
+require no local license file or build-time injection. Other developers must
+ensure their own use complies with the
+[official license terms](https://primeui.dev/licenses/community).
+Aura follows the system theme; this slice does not implement theme/language
+controls, navigation, or business features.
 
-```bash
-ng generate component component-name
-```
+## Verification
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Verified on Windows on 2026-11-19: clean `npm ci`, format, lint, 2 Vitest tests,
+and production build passed. The same gates passed from an isolated source copy
+with its own clean dependency installation. Deliberate formatting, unused-variable,
+type-error, and assertion probes failed in that copy; restored gates passed.
+A no-matching-test-files probe also failed.
 
-```bash
-ng generate --help
-```
+Browser inspection with an authorized local license passed at actual CSS widths
+375px, 768px, and 1280px: Aura card rendered without horizontal overflow or a
+license notice. The static shell has no interactive controls to exercise with
+keyboard/touch. This is shell verification, not business-flow browser E2E.
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Next proposed slice: independent path-aware Client and Server CI workflows;
+see [the foundation plan](../Docs/Foundation-CI-Plan.md).

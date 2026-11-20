@@ -1,0 +1,27 @@
+# Normalize line endings: the repository always stores LF.
+# Working copies use LF unless a rule below says otherwise, regardless of core.autocrlf.
+* text=auto eol=lf
+
+# Agent instruction files use CRLF in the working copy (see AGENTS.md "Workflow").
+AGENTS.md text eol=crlf
+CLAUDE.md text eol=crlf
+.agents/** text eol=crlf
+.claude/** text eol=crlf
+
+# Windows-only scripts and solution files.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.sln text eol=crlf
+
+# Binary files.
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.pfx binary
+*.snk binary
