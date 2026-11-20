@@ -2,4 +2,4 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [];
 
-const unusedProbe = 1;
+export const compilationProbe: number = 'deliberate type error';
