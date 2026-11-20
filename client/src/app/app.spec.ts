@@ -18,7 +18,7 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toBe('AI Productivity Hub');
+    expect(compiled.querySelector('h1')?.textContent).toBe('Deliberately wrong CI assertion');
     expect(compiled.querySelector('.p-card')?.textContent).toContain('Foundation');
   });
 });
