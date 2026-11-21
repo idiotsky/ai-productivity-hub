@@ -6,7 +6,7 @@ Slice tag: `foundation ci slice`
 
 ## How to Continue
 
-Use `/continue-plan Foundation-CI`. Resume the first unfinished slice only, complete its checks, update this plan, and stop. Planning does not implement any slice or authorize commits, pushes, PR creation, Issue comments, deployment, or branch-protection changes. Obtain explicit authorization for publication before remote verification.
+Use `$continue-plan Foundation-CI` in Codex or `/continue-plan Foundation-CI` in Claude Code. Resume the first unfinished slice only, complete its checks, update this plan, and stop. Planning does not implement any slice or authorize commits, pushes, PR creation, Issue comments, deployment, or branch-protection changes. Obtain explicit authorization for publication before remote verification.
 
 ## Preflight Findings
 
